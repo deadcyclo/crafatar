@@ -1,5 +1,29 @@
 TODO: Own: docker run -d -p 5000:5000 --link redis-testing -e REDIS_URL=redis://redis:6379 deadcyclo/crafatar
 
+# Usage of docker dev image
+
+## Building
+
+Note, docker 1.6 or later required. docker build -t deadcyclo/crafatar-dev -f Dockerfile.dev .
+
+## Getting ready
+
+Before running the first time, you need to copy config.example.js to config.js in the root of the project (the file is ignored so it will not be checked in to the repository.
+
+## Running
+
+`docker run --name crafatar-dev --rm -i -p 5000:5000 --link redis-testing:redis -e REDIS_URL=redis://redis:6379 -v /home/brendan/projects/crafatar:/app deadcyclo/craftatar-dev /bin/bash`
+
+First time around you need to do
+
+* `cd /app`
+* `npm install`
+
+To run the application do
+
+* `cd /app`
+* `forever -w www.js`
+
 
 # Crafatar [![travis](https://img.shields.io/travis/crafatar/crafatar/master.svg?style=flat-square)](https://travis-ci.org/crafatar/crafatar/) [![Coverage Status](https://img.shields.io/coveralls/crafatar/crafatar.svg?style=flat-square)](https://coveralls.io/r/crafatar/crafatar) [![Code Climate](https://img.shields.io/codeclimate/github/crafatar/crafatar.svg?style=flat-square)](https://codeclimate.com/github/crafatar/crafatar)
 [![IRC: esper.net](https://img.shields.io/badge/IRC-esper.net-blue.svg?style=flat-square)](https://webchat.esper.net/?channels=crafatar "#crafatar") [![dependency status](https://img.shields.io/david/crafatar/crafatar.svg?style=flat-square)](https://david-dm.org/crafatar/crafatar) [![devDependency status](https://img.shields.io/david/dev/crafatar/crafatar.svg?style=flat-square)](https://david-dm.org/crafatar/crafatar#info=devDependencies) [![docs status](https://inch-ci.org/github/crafatar/crafatar.svg?branch=master&style=flat-square)](https://inch-ci.org/github/crafatar/crafatar)
